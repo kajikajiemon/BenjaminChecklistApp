@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+<title>ベンジャミン・フランクリンの十三徳</title>
+</head>
+<body>
+  <div>
+		<div class="page-header">
+			<h1 th:text="${title}">ベンジャミン・フランクリンの十三徳</h1>
+		</div>
+		<form method="post" th:action="@{/checklist}" th:object="${checklistForm}">
+			<table class="table table-bordered table-hover">
+				<!--  登録日 -->
+				<tr>
+  				<th class="active">登録日</th>
+					<td>
+						<div class="form-group" th:classappend="${#fields.hasErrors('registDate')} ? 'has-error'">
+							<input type="text" name="registDate" class="form-control" placeholder="yyyy/MM/dd" th:field="*{registDate}"/>
+							<span class="text-danger" th:if="${#fields.hasErrors('registDate')}" th:errors="*{registDate}">registDate error</span>
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣01 -->
+				<tr>
+					<th class="active">1. 節制</th>
+					<td>
+						<div class="form-group">
+							頭や体が鈍くなるほど食べないこと。はめをはずすほどお酒を飲まないこと。<br/>
+							<input type="radio" name="habitNo01" th:text="できた" th:value="true" th:field="*{habitNo01}">
+							<input type="radio" name="habitNo01" th:text="できなかった" th:value="false" th:field="*{habitNo01}">
+							<span class="text-danger" th:if="${#fields.hasErrors('habitNo01')}" th:errors="*{habitNo01}">habiNo01 error</span>
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣02 -->
+				<tr>
+					<th class="active">2. 沈黙</th>
+					<td>
+						<div class="form-group">
+							他人あるいは自分に利益にならないことは話さないこと。よけいな無駄話はしないこと。<br/>
+							<input type="radio" name="habitNo02" th:text="できた" th:value="true" th:field="*{habitNo02}">
+							<input type="radio" name="habitNo02" th:text="できなかった" th:value="false" th:field="*{habitNo02}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣03 -->
+				<tr>
+					<th class="active">3. 規律</th>
+					<td>
+						<div class="form-group">
+							自分の持ち物はすべて置き場所を決めておくこと。仕事は、それぞれ時間を決めて行うこと。<br/>
+							<input type="radio" name="habitNo03" th:text="できた" th:value="true" th:field="*{habitNo03}">
+							<input type="radio" name="habitNo03" th:text="できなかった" th:value="false" th:field="*{habitNo03}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣04 -->
+				<tr>
+					<th class="active">4. 決断</th>
+					<td>
+						<div class="form-group">
+							なすべきことをやろうと決心すること。決心したことは、必ずやり遂げること。<br/>
+							<input type="radio" name="habitNo04" th:text="できた" th:value="true" th:field="*{habitNo04}">
+							<input type="radio" name="habitNo04" th:text="できなかった" th:value="false" th:field="*{habitNo04}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣05 -->
+				<tr>
+					<th class="active">5. 節約</th>
+					<td>
+						<div class="form-group">
+							他人や自分に役立つことにのみお金を使うこと。すなわち、無駄づかいはしないこと。<br/>
+							<input type="radio" name="habitNo05" th:text="できた" th:value="true" th:field="*{habitNo05}">
+							<input type="radio" name="habitNo05" th:text="できなかった" th:value="false" th:field="*{habitNo05}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣06 -->
+				<tr>
+					<th class="active">6. 勤勉</th>
+					<td>
+						<div class="form-group">
+							時間を無駄にしないこと。いつも有益なことに時間を使うこと。無益な行動をすべてやめること。<br/>
+							<input type="radio" name="habitNo06" th:text="できた" th:value="true" th:field="*{habitNo06}">
+							<input type="radio" name="habitNo06" th:text="できなかった" th:value="false" th:field="*{habitNo06}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣07 -->
+				<tr>
+					<th class="active">7. 誠実</th>
+					<td>
+						<div class="form-group">
+							欺して人に害を与えないこと。清く正しく思考すること。口にする言葉も、また同じ。<br/>
+							<input type="radio" name="habitNo07" th:text="できた" th:value="true" th:field="*{habitNo07}">
+							<input type="radio" name="habitNo07" th:text="できなかった" th:value="false" th:field="*{habitNo07}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣08 -->
+				<tr>
+					<th class="active">8. 正義</th>
+					<td>
+						<div class="form-group">
+							不正なことを行い、あるいは、自分の義務であることをやらないで、他人に損害を与えないこと。<br/>
+							<input type="radio" name="habitNo08" th:text="できた" th:value="true" th:field="*{habitNo08}">
+							<input type="radio" name="habitNo08" th:text="できなかった" th:value="false" th:field="*{habitNo08}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣09 -->
+				<tr>
+					<th class="active">9. 中庸</th>
+					<td>
+						<div class="form-group">
+							何事も極端でないこと。たとえ相手に不正を受け、激怒するに値すると思ってもがまんしたほうがよいときはがまんすること。<br/>
+							<input type="radio" name="habitNo09" th:text="できた" th:value="true" th:field="*{habitNo09}">
+							<input type="radio" name="habitNo09" th:text="できなかった" th:value="false" th:field="*{habitNo09}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣10 -->
+				<tr>
+					<th class="active">10. 清潔</th>
+					<td>
+						<div class="form-group">
+							身体、衣服、住居、を不潔にしないこと。<br/>
+							<input type="radio" name="habitNo10" th:text="できた" th:value="true" th:field="*{habitNo10}">
+							<input type="radio" name="habitNo10" th:text="できなかった" th:value="false" th:field="*{habitNo10}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣11 -->
+				<tr>
+					<th class="active">11. 冷静</th>
+					<td>
+						<div class="form-group">
+							つまらないこと、ありがちな事故、避けられない事故などに心を取り乱さないこと。<br/>
+							<input type="radio" name="habitNo11" th:text="できた" th:value="true" th:field="*{habitNo11}">
+							<input type="radio" name="habitNo11" th:text="できなかった" th:value="false" th:field="*{habitNo11}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣12 -->
+				<tr>
+					<th class="active">12. 純潔</th>
+					<td>
+						<div class="form-group">
+							性の営みは、健康のためか、子供を作るためにのみすること。性におぼれ、なまけものになったり、自分や他人の平和な生活を乱したり、信用を失くしたりしないこと。<br/>
+							<input type="radio" name="habitNo12" th:text="できた" th:value="true" th:field="*{habitNo12}">
+							<input type="radio" name="habitNo12" th:text="できなかった" th:value="false" th:field="*{habitNo12}">
+						</div>	
+					</td>
+				</tr>
+				<!--  習慣13 -->
+				<tr>
+					<th class="active">13. 謙譲</th>
+					<td>
+						<div class="form-group">
+							イエスとソクラテスを見習うこと。<br/>
+							<input type="radio" name="habitNo13" th:text="できた" th:value="true" th:field="*{habitNo13}">
+							<input type="radio" name="habitNo13" th:text="できなかった" th:value="false" th:field="*{habitNo13}">
+						</div>	
+					</td>
+				</tr>
+			</table>
+			<!--  登録ボタン -->
+			<p>
+				<button class="btn btn-primary" type="submit">登録</button>
+			</p>
+		</form>
+	</div>
+</body>
+</html>
