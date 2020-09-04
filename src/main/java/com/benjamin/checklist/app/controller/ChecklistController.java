@@ -1,5 +1,12 @@
 package com.benjamin.checklist.app.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +29,18 @@ public class ChecklistController {
 	@GetMapping("/checklist")
 	public String getChecklist(@ModelAttribute ChecklistForm form, Model model) {
 		
-		model.addAttribute("title","ベンジャミン・フランクリンの十三徳");
+		model.addAttribute("title", "ベンジャミン・フランクリンの十三徳");
+	
+		// Test
+		final Map<String, String> MAP;
+	  Map<String, String> map = new HashMap<>();
+	  map.put("a", "1");
+    map.put("b", "2");
+		
+    for(Map.Entry<String, String> entry : map.entrySet()) {
+      System.out.println(entry.getKey());
+      System.out.println(entry.getValue());
+    }
 		
 		// checklist.htmlに画面遷移
 		return "checklist/checklist";
@@ -75,8 +93,33 @@ public class ChecklistController {
 			}
 		}
 
-		
 		// checklist.htmlにリダイレクト
 		return "redirect:/checklist";
 	}
+
+	// Debug用
+	@GetMapping("/checklist_test")
+	public String getChecklistTest(@ModelAttribute ChecklistForm form, Model model) throws ParseException {
+		// 任意の日付文字列
+		String strDate = "2020/08/28 00:00:00";
+
+		// 取り扱う日付の形にフォーマット設定
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+
+		// Date型に変換( DateFromatクラスのperse() )
+		Date registDate = sdformat.parse(strDate);
+		
+		// コンソールに結果を出力
+		System.out.println("DEBUG出力:selectOne");
+		System.out.println(checklistService.selectOne(registDate));
+		System.out.println("DEBUG出力:selectMany");
+		List<Checklist> list = checklistService.selectMany();
+		for(Checklist data:list) {
+			System.out.println(data);
+		}
+		
+		// checklist.htmlに画面遷移
+		return "checklist/checklist";
+	}
+
 }
