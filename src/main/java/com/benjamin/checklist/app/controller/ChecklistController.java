@@ -31,7 +31,7 @@ public class ChecklistController {
 
     model.addAttribute("title", "ベンジャミン・フランクリンの十三徳");
 
-    // Test
+    // Test2
     Map<String, String> map = new HashMap<>();
     map.put("a", "1");
     map.put("b", "2");
