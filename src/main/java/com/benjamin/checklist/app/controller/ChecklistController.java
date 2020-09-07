@@ -20,7 +20,10 @@ import com.benjamin.checklist.domain.model.Checklist;
 import com.benjamin.checklist.domain.model.ChecklistForm;
 import com.benjamin.checklist.domain.service.ChecklistService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class ChecklistController {
 
   @Autowired
@@ -31,7 +34,7 @@ public class ChecklistController {
 
     model.addAttribute("title", "ベンジャミン・フランクリンの十三徳");
 
-    // Test2
+    // MAPのセット、取得のテスト
     Map<String, String> map = new HashMap<>();
     map.put("a", "1");
     map.put("b", "2");
@@ -39,6 +42,13 @@ public class ChecklistController {
     for (Map.Entry<String, String> entry : map.entrySet()) {
       System.out.println(entry.getKey());
       System.out.println(entry.getValue());
+
+       // SLF4J + logback テスト
+      log.trace("trace");
+      log.debug("debug");
+      log.info("info");
+      log.warn("warn");
+      log.debug("error");
     }
 
     // checklist.htmlに画面遷移
