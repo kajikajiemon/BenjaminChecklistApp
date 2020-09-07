@@ -44,3 +44,8 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+findbugs {
+    reportsDir = file("./build/reports/findbugs")
+    ignoreFailures = true
+}
