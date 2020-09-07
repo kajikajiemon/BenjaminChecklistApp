@@ -1,11 +1,12 @@
-<configuration debug="true">
+<configuration>
   <!-- デフォルト設定読み込み -->
-  <include resource="org/springframework/boot/logging/logback/base.xml" />
+  <include
+    resource="org/springframework/boot/logging/logback/base.xml" />
 
-  <!-- ここまで解析済 -->
-  <!-- 標準出力用設定 -->
+  <!-- 出力ルール ～コンソール～ -->
   <appender name="STDOUT"
     class="ch.qos.logback.core.ConsoleAppender">
+    <target>System.out</target>
     <encoder>
       <charset>UTF-8</charset>
       <pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n
@@ -13,22 +14,18 @@
     </encoder>
   </appender>
 
-  <!-- ファイルA出力用設定 -->
-  <appender name="FILE_A"
+  <!--出力ルール ～ログファイル～ -->
+  <appender name="LOG_FILE"
     class="ch.qos.logback.core.rolling.RollingFileAppender">
     <!-- 出力先ファイルパス -->
-    <file>
-      /
-      <任意のパス>/alog.log
+    <file>/Users/kajinoyoshiharu/Documents/workspace/BenjaminChecklistApp/logback.log
     </file>
 
     <!-- ログのローテーション設定 -->
     <rollingPolicy
       class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
       <!-- 世代管理されるファイルの命名パターン -->
-      <fileNamePattern>
-        /
-        <任意のパス>/alog.log.%i
+      <fileNamePattern>/Users/kajinoyoshiharu/Documents/workspace/BenjaminChecklistApp/logback.log.%i
       </fileNamePattern>    <!-- %iはインデックス。minIndexからMaxIndexまでの連番 -->
       <minIndex>1</minIndex>
       <maxIndex>7</maxIndex>      <!-- 最大7ファイルまで世代管理 -->
@@ -47,41 +44,10 @@
     </encoder>
   </appender>
 
-  <!-- ファイルB出力用設定 -->
-  ・・・③
-  <appender name="FILE_B"
-    class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>
-      /
-      <任意のパス>/blog.log
-    </file>
-
-    <rollingPolicy
-      class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>
-        /
-        <任意のパス>/blog.log.%d{yyyy-MM-dd}
-      </fileNamePattern>
-      <!-- %d{yyyy-MM-dd}の設定によって、自動でローテーションがトリガされる。日まで指定すると、毎日ローテーション。 -->
-
-      <!-- 最大３０日間保存 -->
-      <maxHistory>30</maxHistory>
-
-    </rollingPolicy>
-    <encoder>
-      <pattern>%d{yyyy/MM/dd HH:mm:ss} %-5level [%thread] - %msg%n
-      </pattern>
-    </encoder>
-  </appender>
-
-  <!-- rootロガーを継承したサブロガー。rootロガーの設定を引き継ぎつつ、追加でファイルBにもログを出す -->
-  <logger name="com.example" level="INFO">
-    <appender-ref ref="FILE_B" />
-  </logger>
-
-  <!-- rootロガー。ログは原則ファイルAと標準出力に出力する -->
+  <!-- rootロガー。ログはSTOUTとログファイルに出力する -->
   <root level="INFO">
     <appender-ref ref="STDOUT" />
-    <appender-ref ref="FILE_A" />
+    <appender-ref ref="LOG_FILE" />
   </root>
+
 </configuration>
