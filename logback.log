@@ -2059,3 +2059,43 @@ Database is already closed (to disable automatic closing at VM shutdown, add ";D
 2020/09/04 12:09:33 INFO  [RMI TCP Connection(42)-127.0.0.1] - Shutting down ExecutorService 'applicationTaskExecutor'
 2020/09/04 12:09:33 INFO  [RMI TCP Connection(42)-127.0.0.1] - HikariPool-6 - Shutdown initiated...
 2020/09/04 12:09:33 INFO  [RMI TCP Connection(42)-127.0.0.1] - HikariPool-6 - Shutdown completed.
+2020/09/07 11:32:59 INFO  [restartedMain] - Starting BenjaminChecklistAppApplication on kajino.local with PID 4289 (/Users/kajinoyoshiharu/Documents/workspace/BenjaminChecklistApp/bin/main started by kajinoyoshiharu in /Users/kajinoyoshiharu/Documents/workspace/BenjaminChecklistApp)
+2020/09/07 11:32:59 INFO  [restartedMain] - No active profile set, falling back to default profiles: default
+2020/09/07 11:32:59 INFO  [restartedMain] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2020/09/07 11:32:59 INFO  [restartedMain] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2020/09/07 11:33:02 INFO  [restartedMain] - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2020/09/07 11:33:02 INFO  [restartedMain] - Finished Spring Data repository scanning in 70ms. Found 0 JDBC repository interfaces.
+2020/09/07 11:33:04 INFO  [restartedMain] - Tomcat initialized with port(s): 8080 (http)
+2020/09/07 11:33:04 INFO  [restartedMain] - Starting service [Tomcat]
+2020/09/07 11:33:04 INFO  [restartedMain] - Starting Servlet engine: [Apache Tomcat/9.0.37]
+2020/09/07 11:33:04 INFO  [restartedMain] - Initializing Spring embedded WebApplicationContext
+2020/09/07 11:33:04 INFO  [restartedMain] - Root WebApplicationContext: initialization completed in 4568 ms
+2020/09/07 11:33:04 INFO  [restartedMain] - HikariPool-1 - Starting...
+2020/09/07 11:33:05 INFO  [restartedMain] - HikariPool-1 - Start completed.
+2020/09/07 11:33:05 INFO  [restartedMain] - H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:test'
+2020/09/07 11:33:05 INFO  [restartedMain] - LiveReload server is running on port 35729
+2020/09/07 11:33:06 INFO  [restartedMain] - Initializing ExecutorService 'applicationTaskExecutor'
+2020/09/07 11:33:08 WARN  [restartedMain] - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2020/09/07 11:33:08 WARN  [restartedMain] - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: データベースはすでに閉じられています (VM終了時の自動データベースクローズを無効にするためには、db URLに ";DB_CLOSE_ON_EXIT=FALSE" を追加してください)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-200]
+2020/09/07 11:33:08 INFO  [restartedMain] - Shutting down ExecutorService 'applicationTaskExecutor'
+2020/09/07 11:33:08 INFO  [restartedMain] - HikariPool-1 - Shutdown initiated...
+2020/09/07 11:33:08 INFO  [restartedMain] - HikariPool-1 - Shutdown completed.
+2020/09/07 11:33:08 INFO  [restartedMain] - Stopping service [Tomcat]
+2020/09/07 11:33:08 INFO  [restartedMain] - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2020/09/07 11:33:08 ERROR [restartedMain] - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
